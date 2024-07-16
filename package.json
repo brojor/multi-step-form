@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^3.12.3",
-    "vue": "latest"
+    "vue": "latest",
+    "zod": "^3.23.8"
   }
 }
