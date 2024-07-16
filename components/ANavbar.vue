@@ -1,11 +1,11 @@
 <template>
 	<nav>
 		<ul>
-			<li v-for="item in navigation">
-				<div class="nav-item-number" :class="{ active: activeStep === item.id }">{{ item.id }}</div>
+			<li v-for="(item, i) in navItems">
+				<div class="nav-item-number" :class="{ active: activeStep === i }">{{ i + 1 }}</div>
 				<div>
-					<p class="step">{{ `Step ${item.id}` }}</p>
-					<p class="nav-item-name">{{ item.title }}</p>
+					<p class="step">{{ `Step ${i + 1}` }}</p>
+					<p class="nav-item-name">{{ item }}</p>
 				</div>
 			</li>
 		</ul>
@@ -14,27 +14,24 @@
 
 
 <script setup lang="ts">
-const activeStep = ref(1)
-const navigation = [
-	{ id: 1, title: 'Your info' },
-	{ id: 2, title: 'Select Plan' },
-	{ id: 3, title: 'Add-ons' },
-	{ id: 4, title: 'Summary' },
+defineProps<{
+	activeStep: number
+}>()
+
+const navItems = [
+	'Your info',
+	'Select Plan',
+	'Add-ons',
+	'Summary',
 ]
 </script>
 
 
 <style scoped>
 nav {
-	/* background-image: url(/public/bg-sidebar-desktop.svg); */
 	background-image: url(/public/bg-sidebar-mobile.svg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	/* width: 17.25rem; */
-	/* display: flex; */
-	/* border-radius: 0.5rem; */
-	/* padding: 2.5rem 2rem */
-
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -45,9 +42,7 @@ nav {
 ul {
 	margin-top: 2rem;
 	display: flex;
-	/* flex-direction: column; */
 	justify-content: center;
-	/* gap: 2rem; */
 	gap: 1rem;
 }
 
@@ -58,7 +53,7 @@ li {
 	gap: 1rem;
 }
 
-li > :last-child {
+li> :last-child {
 	display: none;
 }
 

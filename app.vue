@@ -1,20 +1,26 @@
 <script setup lang="ts">
+import PersonalInfo from './components/PersonalInfo.vue'
+import PlanSelection from './components/PlanSelection.vue';
+import AddOns from './components/AddOns.vue';
+import FinishingUp from './components/FinishingUp.vue';
+
+const stepNum = ref(0)
+
+const steps = [PersonalInfo, PlanSelection, AddOns, FinishingUp]
 </script>
 
 <template>
   <div class="container">
     <main>
-      <ANavbar />
+      <ANavbar :active-step="stepNum" />
       <div class="content">
-        <div class="content-inner">
-        </div>
-        <NavButtons />
+        <component :is="steps[stepNum]" :stepNum="stepNum" @next-step="stepNum++" @previous-step="stepNum--" />
       </div>
     </main>
   </div>
 </template>
 
-<style scoped>
+<style>
 .container {
   width: 100%;
   display: flex;
@@ -45,12 +51,12 @@ main {
 }
 
 .content-inner {
-  height: 100%;
-  height: 400px;
-  background-color: #e18181;
+  background-color: var(--clr-white);
+  padding: 1rem;
   margin-inline: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0px 3px 22px -9px rgba(0, 0, 0, 0.2);
+  margin-top: 0.25rem;
 }
 
 @media (min-width: 50rem) {
@@ -73,6 +79,7 @@ main {
     width: 100%;
     margin-inline: 0;
     box-shadow: none;
+    padding: 0;
   }
 }
 </style>

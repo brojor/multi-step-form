@@ -1,12 +1,21 @@
 <template>
 	<div class="buttons">
-		<button class="button-secondary">Go back</button>
-		<button class="button-primary">Next Step</button>
+		<button v-if="stepNum !== 0" class="button-secondary" @click="$emit('previous-step')">Go Back</button>
+		<button class="button-primary" :class="{ confirm: stepNum === 3 }" @click="$emit('next-step')">{{ nextButtonLabel
+			}}</button>
 	</div>
 </template>
 
 
 <script setup lang="ts">
+defineEmits(['next-step', 'previous-step'])
+const props = defineProps<{
+	stepNum: number
+}>()
+
+const nextButtonLabel = computed(() => {
+	return props.stepNum === 3 ? 'Confirm' : 'Next Step'
+})
 
 </script>
 
@@ -38,6 +47,10 @@ button {
 	margin-left: auto;
 	background-color: var(--clr-marine-blue);
 	color: var(--clr-white);
+}
+
+.confirm {
+	background-color: var(--clr-purplish-blue);
 }
 
 .button-primary:hover,

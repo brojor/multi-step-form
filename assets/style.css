@@ -46,3 +46,9 @@ body {
 	font-size: 1rem;
 	color: var(--clr-marine-blue);
 }
+
+/* Utility classes */
+.sub-heading {
+	color: var(--clr-cool-gray);
+	margin-top: 0.25rem;
+}
