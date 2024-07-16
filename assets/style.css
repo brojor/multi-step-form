@@ -1,0 +1,48 @@
+:root {
+	--clr-marine-blue: hsl(213, 96%, 18%);
+	--clr-purplish-blue: hsl(243, 100%, 62%);
+	--clr-pastel-blue: hsl(228, 100%, 84%);
+	--clr-light-blue: hsl(206, 94%, 87%);
+	--clr-strawberry-red: hsl(354, 84%, 57%);
+
+	--clr-cool-gray: hsl(231, 11%, 63%);
+	--clr-light-gray: hsl(229, 24%, 87%);
+	--clr-magnolia: hsl(217, 100%, 97%);
+	--clr-alabaster: hsl(231, 100%, 99%);
+	--clr-white: hsl(0, 0%, 100%);
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+ul, ol {
+	list-style: none;
+	padding: 0;
+}
+
+
+body {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 1rem;
+	color: var(--clr-marine-blue);
+}
