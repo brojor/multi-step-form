@@ -8,14 +8,14 @@
 				<label for="name">Name</label>
 				<p class="error-message">{{ errors?.name?._errors[0] }}</p>
 			</div>
-			<input v-model="data.name" :class="{ invalid: errors?.name }" type="text" id="name"
+			<input v-model="dataStore.personalInfo.name" :class="{ invalid: errors?.name }" type="text" id="name"
 				placeholder="e.g. Stephen King" />
 
 			<div class="flex-group">
 				<label for="email">Email Address</label>
 				<p class="error-message">{{ errors?.email?._errors[0] }}</p>
 			</div>
-			<input v-model="data.email" :class="{ invalid: errors?.email }" type="email" id="email"
+			<input v-model="dataStore.personalInfo.email" :class="{ invalid: errors?.email }" type="email" id="email"
 				placeholder="e.g. stephenking@lorem.com" />
 
 
@@ -23,7 +23,7 @@
 				<label for="phone">Phone Number</label>
 				<p class="error-message">{{ errors?.phone?._errors[0] }}</p>
 			</div>
-			<input v-model="data.phone" :class="{ invalid: errors?.phone }" type="tel" id="phone"
+			<input v-model="dataStore.personalInfo.phone" :class="{ invalid: errors?.phone }" type="tel" id="phone"
 				placeholder="e.g. +1 234 567 890" />
 
 		</form>
@@ -34,17 +34,14 @@
 
 <script setup lang="ts">
 import * as z from 'zod'
+import { useDataStore } from '~/stores/dataStore';
 
 const emit = defineEmits(['next-step', 'previous-step'])
 defineProps<{
 	stepNum: number
 }>()
 
-const data = ref({
-	name: '',
-	email: '',
-	phone: ''
-})
+const dataStore = useDataStore()
 
 const formSchema = z.object({
 	name: z.string().min(1, { message: 'This field is required' }),
@@ -57,7 +54,7 @@ type FormSchema = z.infer<typeof formSchema>
 const errors = ref<z.ZodFormattedError<FormSchema> | null>(null)
 
 const handleSubmit = () => {
-	const result = formSchema.safeParse(data.value)
+	const result = formSchema.safeParse(dataStore.personalInfo)
 	if (!result.success) {
 		errors.value = result.error.format()
 		return
@@ -85,16 +82,17 @@ input {
 	padding: 0.75rem 1rem;
 	font-weight: 500;
 	border: 1px solid var(--clr-light-gray);
+	color: var(--clr--marine-blue);
 	border-radius: 0.5rem;
+}
+
+input.invalid {
+	border-color: var(--clr-strawberry-red);
 }
 
 input:focus {
 	outline: none;
 	border: 1px solid var(--clr-purplish-blue);
-}
-
-input.invalid {
-	border-color: var(--clr-strawberry-red);
 }
 
 .flex-group {
