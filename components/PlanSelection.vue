@@ -17,7 +17,7 @@
 
 		<div class="payment-method">
 			<span :class="{ active: !isYearly }">Monthly</span>
-			<AToggle @change="handleToggleChange" />
+			<AToggle @change="handleToggleChange" :is-on="isYearly" />
 			<span :class="{ active: isYearly }">Yearly</span>
 		</div>
 

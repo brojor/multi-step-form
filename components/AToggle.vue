@@ -1,21 +1,23 @@
 <template>
 	<label class="switch" tabindex="0" @keypress="handleKeypress">
-		<input v-model="isOn" type="checkbox" tabindex="-1">
+		<input @change="handleChange" :checked="isOn" type="checkbox" tabindex="-1">
 		<span class="slider"></span>
 	</label>
 </template>
 
 <script setup lang="ts">
 const emit = defineEmits(['change'])
-const isOn = ref(false)
+const props = defineProps<{
+	isOn: boolean
+}>()
 
-watch(isOn, () => {
-	emit('change', isOn.value)
-})
+const handleChange = () => {
+	emit('change', !props.isOn)
+}
 
 const handleKeypress = (event: KeyboardEvent) => {
 	if (event.key === 'Enter' || event.key === ' ') {
-		isOn.value = !isOn.value
+		handleChange()
 	}
 }
 
