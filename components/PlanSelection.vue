@@ -5,11 +5,11 @@
 
 		<div class="plan-cards">
 			<div class="plan-card" v-for="(plan, i) in plans" :key="plan.name" :class="{ active: i === activeIndex }"
-				@click="activeIndex = i" tabindex="0" @keypress="handleKeypress(i, $event)">
-				<component :is="plan.icon" />
+				@click="changePlan(plan)" tabindex="0" @keypress="handleKeypress(plan, $event)">
+				<component :is="resolveComponent(`Icon${plan.name}`)" />
 				<div class="plan-card-text">
 					<h2>{{ plan.name }}</h2>
-					<p>{{ isYearly ? `$${plan.yearlyPrice}/yr` : `$${plan.monthlyPrice}/mo` }}</p>
+					<p>{{ isYearly ? `$${plan.price.yearly}/yr` : `$${plan.price.monthly}/mo` }}</p>
 					<p v-show="isYearly">2 months free</p>
 				</div>
 			</div>
@@ -27,33 +27,31 @@
 
 
 <script setup lang="ts">
-import IconArcade from '~/components/Icon/Arcade.vue'
-import IconAdvanced from '~/components/Icon/Advanced.vue'
-import IconPro from '~/components/Icon/Pro.vue'
-
+import { useDataStore, plans } from '~/stores/dataStore';
 
 defineEmits(['next-step', 'previous-step'])
 defineProps<{
 	stepNum: number
 }>()
 
-const activeIndex = ref(0)
-const isYearly = ref(false)
+const dataStore = useDataStore()
 
-const plans = [
-	{ name: 'Arcade', monthlyPrice: 9, yearlyPrice: 90, icon: IconArcade },
-	{ name: 'Advanced', monthlyPrice: 12, yearlyPrice: 120, icon: IconAdvanced },
-	{ name: 'Pro', monthlyPrice: 15, yearlyPrice: 150, icon: IconPro },
-]
+const activeIndex = computed(() => plans.findIndex(plan => plan.name === dataStore.plan.name))
+const isYearly = computed(() => dataStore.yearlyBilling)
+
 
 const handleToggleChange = (isOn: boolean) => {
-	isYearly.value = isOn
+	dataStore.yearlyBilling = isOn
 }
 
-const handleKeypress = (index: number, event: KeyboardEvent) => {
+const handleKeypress = (plan: typeof plans[number], event: KeyboardEvent) => {
 	if (event.key === 'Enter' || event.key === ' ') {
-		activeIndex.value = index
+		changePlan(plan)
 	}
+}
+
+const changePlan = (plan: typeof plans[number]) => {
+	dataStore.plan = plan
 }
 </script>
 
