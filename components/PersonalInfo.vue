@@ -1,6 +1,6 @@
 <template>
 	<div class="content-inner">
-		<h1>Personal info</h1>
+		<h1 class="heading">Personal info</h1>
 		<p class="sub-heading">Please provide your name, email address, and phone number.</p>
 
 		<form>

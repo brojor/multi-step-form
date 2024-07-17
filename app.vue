@@ -52,11 +52,10 @@ main {
 
 .content-inner {
   background-color: var(--clr-white);
-  padding: 1rem;
+  padding: 1.5rem 1.5rem 2rem;
   margin-inline: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0px 3px 22px -9px rgba(0, 0, 0, 0.2);
-  margin-top: 0.25rem;
   overflow: auto;
 }
 
@@ -82,6 +81,7 @@ main {
     margin-inline: 0;
     box-shadow: none;
     padding: 0;
+    margin-top: 0.25rem;
   }
 }
 </style>

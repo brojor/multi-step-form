@@ -1,6 +1,6 @@
 <template>
 	<div class="content-inner">
-		<h1>Pick add-ons</h1>
+		<h1 class="heading">Pick add-ons</h1>
 		<p class="sub-heading">Add-ons help enhance your gaming experience.</p>
 
 		<ul class="add-ons">
@@ -37,7 +37,7 @@ const dataStore = useDataStore()
 	margin-top: 1.5rem;
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 0.75rem;
 }
 
 .add-on {
@@ -72,6 +72,7 @@ const dataStore = useDataStore()
 @media (min-width: 50rem) {
 	.add-ons {
 		margin-top: 2.25rem;
+		gap: 1.25rem;
 	}
 
 	.add-on {

@@ -1,6 +1,6 @@
 <template>
 	<div class="content-inner">
-		<h1>Select your plan</h1>
+		<h1 class="heading">Select your plan</h1>
 		<p class="sub-heading">You have the option of monthly or yearly billing.</p>
 
 		<div class="plan-cards">
@@ -60,7 +60,7 @@ const changePlan = (index: number) => {
 .plan-cards {
 	display: grid;
 	gap: 1rem;
-	margin-top: 2.5rem;
+	margin-top: 1.5rem;
 }
 
 .plan-card {
@@ -120,6 +120,7 @@ const changePlan = (index: number) => {
 
 @media (min-width: 50rem) {
 	.plan-cards {
+		margin-top: 2.5rem;
 		grid-auto-flow: column;
 		grid-auto-columns: 1fr;
 	}

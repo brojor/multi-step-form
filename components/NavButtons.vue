@@ -27,20 +27,22 @@ const nextButtonLabel = computed(() => {
 	justify-content: space-between;
 	background-color: var(--clr-white);
 	padding: 1rem;
+	font-size: 0.875rem;
+	font-weight: 500;
 }
 
 @media (min-width: 50rem) {
 	.buttons {
 		padding: 0;
+		font-size: 1rem;
 	}
 }
 
 button {
-	padding: 0.75rem 1.5rem;
+	padding: 0.75em 1.5em;
 	border: none;
-	border-radius: 0.5rem;
+	border-radius: 0.5em;
 	cursor: pointer;
-	font-weight: 700;
 }
 
 .button-primary {

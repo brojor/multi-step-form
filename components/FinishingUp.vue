@@ -1,6 +1,6 @@
 <template>
 	<div class="content-inner">
-		<h1>Finishing up</h1>
+		<h1 class="heading">Finishing up</h1>
 		<p class="sub-heading">Double-check everything looks OK before confirming.</p>
 	</div>
 	<NavButtons :step-num="stepNum" @next-step="$emit('next-step')" @previous-step="$emit('previous-step')" />
