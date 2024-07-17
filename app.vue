@@ -47,7 +47,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: 100%;
+  height: calc(100% - 6.25rem);
 }
 
 .content-inner {
@@ -57,6 +57,7 @@ main {
   border-radius: 0.5rem;
   box-shadow: 0px 3px 22px -9px rgba(0, 0, 0, 0.2);
   margin-top: 0.25rem;
+  overflow: auto;
 }
 
 @media (min-width: 50rem) {
@@ -73,6 +74,7 @@ main {
     flex: 1;
     padding: 2rem 9% 1rem;
     margin-top: 0rem;
+    height: 100%;
   }
 
   .content-inner {

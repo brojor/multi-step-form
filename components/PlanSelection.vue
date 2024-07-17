@@ -7,9 +7,11 @@
 			<div class="plan-card" v-for="(plan, i) in plans" :key="plan.name" :class="{ active: i === activeIndex }"
 				@click="activeIndex = i" tabindex="0" @keypress="handleKeypress(i, $event)">
 				<component :is="plan.icon" />
-				<h2>{{ plan.name }}</h2>
-				<p>{{ isYearly ? `$${plan.yearlyPrice}/yr` : `$${plan.monthlyPrice}/mo` }}</p>
-				<p v-show="isYearly">2 months free</p>
+				<div class="plan-card-text">
+					<h2>{{ plan.name }}</h2>
+					<p>{{ isYearly ? `$${plan.yearlyPrice}/yr` : `$${plan.monthlyPrice}/mo` }}</p>
+					<p v-show="isYearly">2 months free</p>
+				</div>
 			</div>
 		</div>
 
@@ -60,18 +62,16 @@ const handleKeypress = (index: number, event: KeyboardEvent) => {
 .plan-cards {
 	display: grid;
 	gap: 1rem;
-	grid-auto-flow: column;
-	grid-auto-columns: 1fr;
 	margin-top: 2.5rem;
 }
 
 .plan-card {
 	display: flex;
-	flex-direction: column;
 	padding: 1rem;
 	border-radius: 0.5rem;
 	border: 1px solid var(--clr-light-gray);
 	cursor: pointer;
+	gap: 1rem;
 }
 
 .plan-card:hover,
@@ -86,7 +86,6 @@ const handleKeypress = (index: number, event: KeyboardEvent) => {
 
 .plan-card h2 {
 	font-size: 1rem;
-	margin-top: 2.5rem;
 }
 
 .plan-card p:first-of-type {
@@ -119,5 +118,17 @@ const handleKeypress = (index: number, event: KeyboardEvent) => {
 
 .payment-method span.active {
 	color: var(--clr-marine-blue);
+}
+
+@media (min-width: 50rem) {
+	.plan-cards {
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+	}
+
+	.plan-card {
+		flex-direction: column;
+		gap: 2.5rem;
+	}
 }
 </style>
