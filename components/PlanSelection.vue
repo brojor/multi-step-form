@@ -5,7 +5,7 @@
 
 		<div class="plan-cards">
 			<div class="plan-card" v-for="(plan, i) in plans" :key="plan.name" :class="{ active: i === activeIndex }"
-				@click="changePlan(plan)" tabindex="0" @keypress="handleKeypress(plan, $event)">
+				@click="changePlan(i)" tabindex="0" @keypress="handleKeypress(i, $event)">
 				<component :is="resolveComponent(`Icon${plan.name}`)" />
 				<div class="plan-card-text">
 					<h2>{{ plan.name }}</h2>
@@ -44,14 +44,14 @@ const handleToggleChange = (isOn: boolean) => {
 	dataStore.yearlyBilling = isOn
 }
 
-const handleKeypress = (plan: typeof plans[number], event: KeyboardEvent) => {
-	if (event.key === 'Enter' || event.key === ' ') {
-		changePlan(plan)
+const handleKeypress = (index: number, event: KeyboardEvent) => {
+	if (event.key === 'Enter') {
+		changePlan(index)
 	}
 }
 
-const changePlan = (plan: typeof plans[number]) => {
-	dataStore.plan = plan
+const changePlan = (index: number) => {
+	dataStore.plan = plans[index]
 }
 </script>
 
