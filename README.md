@@ -1,75 +1,45 @@
-# Nuxt 3 Minimal Starter
+# Frontend Mentor - Multi-step form solution
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Setup
+## Table of contents
 
-Make sure to install the dependencies:
+- [Frontend Mentor - Multi-step form solution](#frontend-mentor---multi-step-form-solution)
+	- [Table of contents](#table-of-contents)
+	- [Overview](#overview)
+		- [The challenge](#the-challenge)
+		- [Screenshot](#screenshot)
+		- [Links](#links)
+		- [Built with](#built-with)
 
-```bash
-# npm
-npm install
+## Overview
 
-# pnpm
-pnpm install
+### The challenge
 
-# yarn
-yarn install
+Users should be able to:
 
-# bun
-bun install
-```
+- Complete each step of the sequence
+- Go back to a previous step to update their selections
+- See a summary of their selections on the final step and confirm their order
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- Receive form validation messages if:
+  - A field has been missed
+  - The email address is not formatted correctly
+  - A step is submitted, but no selection has been made
 
-## Development Server
+### Screenshot
 
-Start the development server on `http://localhost:3000`:
+![Screenshot](./screenshot.png)
 
-```bash
-# npm
-npm run dev
+### Links
 
-# pnpm
-pnpm run dev
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-# yarn
-yarn dev
+### Built with
 
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Semantic HTML5 markup
+- CSS
+- [Nuxt](https://nuxt.com/) - Vue Framework
+- [Zod](https://zod.dev/) - TypeScript-first schema declaration and validation library
