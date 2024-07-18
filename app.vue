@@ -14,7 +14,8 @@ const steps = [PersonalInfo, PlanSelection, AddOns, FinishingUp]
     <main>
       <ANavbar :active-step="stepNum" />
       <div class="content">
-        <component :is="steps[stepNum]" :stepNum="stepNum" @next-step="stepNum++" @previous-step="stepNum--" />
+        <component :is="steps[stepNum]" :stepNum="stepNum" @next-step="stepNum++" @previous-step="stepNum--"
+          @change-plan="stepNum = 1" />
       </div>
     </main>
   </div>

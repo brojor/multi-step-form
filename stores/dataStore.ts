@@ -42,6 +42,17 @@ export const useDataStore = defineStore('data', {
 			const period = state.yearlyBilling ? 'yr' : 'mo'
 			return `$${state.yearlyBilling ? price.yearly : price.monthly}/${period}`
 		},
+		totalPrice(state) {
+			const total = {
+				monthly: state.plan.price.monthly,
+				yearly: state.plan.price.yearly,
+			}
+			for (const addOn of state.addOns) {
+				total.monthly += addOn.price.monthly
+				total.yearly += addOn.price.yearly
+			}
+			return total
+		},
 	},
 
 	actions: {
