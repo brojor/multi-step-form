@@ -24,6 +24,9 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 1rem;
+	color: var(--clr-marine-blue);
 }
 
 img, picture, video, canvas, svg {
@@ -38,13 +41,6 @@ input, button, textarea, select {
 ul, ol {
 	list-style: none;
 	padding: 0;
-}
-
-
-body {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 1rem;
-	color: var(--clr-marine-blue);
 }
 
 
