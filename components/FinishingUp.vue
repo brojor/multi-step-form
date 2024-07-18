@@ -1,29 +1,31 @@
 <template>
-	<div class="content-inner">
-		<h1 class="heading">Finishing up</h1>
-		<p class="sub-heading">Double-check everything looks OK before confirming.</p>
-
-		<div class="services">
-			<div class="plan">
-				<div>
-					<h2 class="plan-name">Arcade ({{ dataStore.yearlyBilling ? 'Yearly' : 'Monthly' }})</h2>
-					<span class="change" @click="$emit('changeStep', -2)">Change</span>
+	<template v-if="!isConfirmed">
+		<div class="content-inner">
+			<h1 class="heading">Finishing up</h1>
+			<p class="sub-heading">Double-check everything looks OK before confirming.</p>
+			<div class="services">
+				<div class="plan">
+					<div>
+						<h2 class="plan-name">Arcade ({{ dataStore.yearlyBilling ? 'Yearly' : 'Monthly' }})</h2>
+						<span class="change" @click="$emit('changeStep', -2)">Change</span>
+					</div>
+					<p class="plan-price">{{ dataStore.formatPrice(dataStore.plan.price) }}</p>
 				</div>
-				<p class="plan-price">{{ dataStore.formatPrice(dataStore.plan.price) }}</p>
+				<ul class="add-ons" v-if="dataStore.addOns.length">
+					<li class="add-on" v-for="addOn in dataStore.addOns">
+						<span>{{ addOn.name }}</span>
+						<span class="add-on-price">+{{ dataStore.formatPrice(addOn.price) }} </span>
+					</li>
+				</ul>
 			</div>
-			<ul class="add-ons" v-if="dataStore.addOns.length">
-				<li class="add-on" v-for="addOn in dataStore.addOns">
-					<span>{{ addOn.name }}</span>
-					<span class="add-on-price">+{{ dataStore.formatPrice(addOn.price) }} </span>
-				</li>
-			</ul>
+			<div class="total-price">
+				<span>Total (per {{ dataStore.yearlyBilling ? 'year' : 'month' }})</span>
+				<span>+{{ dataStore.formatPrice(dataStore.totalPrice) }}</span>
+			</div>
 		</div>
-		<div class="total-price">
-			<span>Total (per {{ dataStore.yearlyBilling ? 'year' : 'month' }})</span>
-			<span>+{{ dataStore.formatPrice(dataStore.totalPrice) }}</span>
-		</div>
-	</div>
-	<NavButtons :step-num="stepNum" @next-step="$emit('changeStep', 1)" @previous-step="$emit('changeStep', -1)" />
+		<NavButtons :step-num="stepNum" @next-step="isConfirmed = true" @previous-step="$emit('changeStep', -1)" />
+	</template>
+	<ThankYou v-else />
 </template>
 
 
@@ -34,6 +36,8 @@ defineProps<{
 }>()
 
 const dataStore = useDataStore()
+
+const isConfirmed = ref(false)
 
 </script>
 
