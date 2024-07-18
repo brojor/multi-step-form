@@ -45,7 +45,7 @@ const handleToggleChange = (isOn: boolean) => {
 }
 
 const handleKeypress = (index: number, event: KeyboardEvent) => {
-	if (event.key === 'Enter') {
+	if (event.key === 'Enter' || event.key === ' ') {
 		changePlan(index)
 	}
 }

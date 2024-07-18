@@ -4,8 +4,8 @@
 		<p class="sub-heading">Add-ons help enhance your gaming experience.</p>
 
 		<ul class="add-ons">
-			<li class="add-on" v-for="addOn in addOns" @click="dataStore.toggleAddOn(addOn)"
-				:class="{ active: dataStore.addOns.includes(addOn) }">
+			<li class="add-on" v-for="addOn in addOns" @click="dataStore.toggleAddOn(addOn)" @keypress="handleKeypress(addOn, $event)"
+				tabindex="0" :class="{ active: dataStore.addOns.includes(addOn) }">
 				<ACheckbox :checked="dataStore.addOns.includes(addOn)" />
 				<div>
 					<h2 class="name">{{ addOn.name }}</h2>
@@ -29,6 +29,11 @@ defineProps<{
 
 const dataStore = useDataStore()
 
+const handleKeypress = (addOn: AddOn, event: KeyboardEvent) => {
+	if (event.key === 'Enter' || event.key === ' ') {
+		dataStore.toggleAddOn(addOn)
+	}
+}
 </script>
 
 

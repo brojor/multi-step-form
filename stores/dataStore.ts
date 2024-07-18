@@ -23,7 +23,7 @@ export const addOns = [
 ] as const
 
 type Plan = (typeof plans)[number]
-type AddOn = (typeof addOns)[number]
+export type AddOn = (typeof addOns)[number]
 
 export const useDataStore = defineStore('data', {
 	state: () => ({
