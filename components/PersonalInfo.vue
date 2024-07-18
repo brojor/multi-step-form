@@ -28,7 +28,7 @@
 
 		</form>
 	</div>
-	<NavButtons :step-num="stepNum" @next-step="handleSubmit" @previous-step="$emit('previous-step')" />
+	<NavButtons :step-num="stepNum" @next-step="handleSubmit" />
 </template>
 
 
@@ -36,7 +36,7 @@
 import * as z from 'zod'
 import { useDataStore } from '~/stores/dataStore';
 
-const emit = defineEmits(['next-step', 'previous-step'])
+const emit = defineEmits(['changeStep'])
 defineProps<{
 	stepNum: number
 }>()
@@ -61,7 +61,7 @@ const handleSubmit = () => {
 	}
 
 	errors.value = null
-	emit('next-step')
+	emit('changeStep', 1)
 }
 </script>
 

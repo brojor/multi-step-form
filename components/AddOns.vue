@@ -4,8 +4,8 @@
 		<p class="sub-heading">Add-ons help enhance your gaming experience.</p>
 
 		<ul class="add-ons">
-			<li class="add-on" v-for="addOn in addOns" @click="dataStore.toggleAddOn(addOn)" @keypress="handleKeypress(addOn, $event)"
-				tabindex="0" :class="{ active: dataStore.addOns.includes(addOn) }">
+			<li class="add-on" v-for="addOn in addOns" @click="dataStore.toggleAddOn(addOn)"
+				@keypress="handleKeypress(addOn, $event)" tabindex="0" :class="{ active: dataStore.addOns.includes(addOn) }">
 				<ACheckbox :checked="dataStore.addOns.includes(addOn)" />
 				<div>
 					<h2 class="name">{{ addOn.name }}</h2>
@@ -15,14 +15,14 @@
 			</li>
 		</ul>
 	</div>
-	<NavButtons :step-num="stepNum" @next-step="$emit('next-step')" @previous-step="$emit('previous-step')" />
+	<NavButtons :step-num="stepNum" @next-step="$emit('changeStep', 1)" @previous-step="$emit('changeStep', -1)" />
 </template>
 
 
 <script setup lang="ts">
 import { addOns, useDataStore } from '~/stores/dataStore';
 
-defineEmits(['next-step', 'previous-step'])
+defineEmits(['changeStep'])
 defineProps<{
 	stepNum: number
 }>()

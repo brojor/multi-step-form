@@ -22,14 +22,14 @@
 		</div>
 
 	</div>
-	<NavButtons :step-num="stepNum" @next-step="$emit('next-step')" @previous-step="$emit('previous-step')" />
+	<NavButtons :step-num="stepNum" @next-step="$emit('changeStep', 1)" @previous-step="$emit('changeStep', -1)" />
 </template>
 
 
 <script setup lang="ts">
 import { useDataStore, plans } from '~/stores/dataStore';
 
-defineEmits(['next-step', 'previous-step'])
+defineEmits(['changeStep'])
 defineProps<{
 	stepNum: number
 }>()

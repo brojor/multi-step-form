@@ -7,7 +7,7 @@
 			<div class="plan">
 				<div>
 					<h2 class="plan-name">Arcade ({{ dataStore.yearlyBilling ? 'Yearly' : 'Monthly' }})</h2>
-					<span class="change" @click="$emit('change-plan')">Change</span>
+					<span class="change" @click="$emit('changeStep', -2)">Change</span>
 				</div>
 				<p class="plan-price">{{ dataStore.formatPrice(dataStore.plan.price) }}</p>
 			</div>
@@ -23,12 +23,12 @@
 			<span>+{{ dataStore.formatPrice(dataStore.totalPrice) }}</span>
 		</div>
 	</div>
-	<NavButtons :step-num="stepNum" @next-step="$emit('next-step')" @previous-step="$emit('previous-step')" />
+	<NavButtons :step-num="stepNum" @next-step="$emit('changeStep', 1)" @previous-step="$emit('changeStep', -1)" />
 </template>
 
 
 <script setup lang="ts">
-defineEmits(['next-step', 'previous-step', 'change-plan'])
+defineEmits(['changeStep'])
 defineProps<{
 	stepNum: number
 }>()
