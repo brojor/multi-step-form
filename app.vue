@@ -27,7 +27,7 @@ const steps = [PersonalInfo, PlanSelection, AddOns, FinishingUp]
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--clr-magnolia)
 }
 
