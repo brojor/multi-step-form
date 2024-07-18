@@ -40,7 +40,7 @@ const dataStore = useDataStore()
 
 <style scoped>
 .services {
-	margin-top: 2.5rem;
+	margin-top: 1.25rem;
 	background-color: var(--clr-magnolia);
 	border-radius: 0.5rem;
 	padding: 1rem 1.5rem;
@@ -56,7 +56,7 @@ const dataStore = useDataStore()
 }
 
 .plan-name {
-	font-size: 1rem;
+	font-size: 0.875rem;
 	color: var(--clr-marine-blue);
 }
 
@@ -78,15 +78,15 @@ const dataStore = useDataStore()
 
 .add-ons {
 	border-top: 1px solid var(--clr-light-gray);
-	padding-top: 0.5rem;
-	margin-top: 1.5rem;
+	margin-top: 0.75rem;
+	padding-top: 0.25rem;
 }
 
 .add-on {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.5rem 0;
+	padding: 0.25rem 0;
 }
 
 .add-on-price {
@@ -106,6 +106,29 @@ const dataStore = useDataStore()
 .total-price span:last-child {
 	font-weight: 700;
 	color: var(--clr-purplish-blue);
-	font-size: 1.25rem;
+	font-size: 1rem;
+}
+
+@media (min-width: 50rem) {
+	.services {
+		margin-top: 2.5rem;
+	}
+
+	.plan-name {
+		font-size: 1rem;
+	}
+
+	.add-ons {
+		margin-top: 1.5rem;
+		padding-top: 0.5rem;
+	}
+
+	.add-on {
+		padding: 0.5rem 0;
+	}
+
+	.total-price span:last-child {
+		font-size: 1.25rem;
+	}
 }
 </style>
