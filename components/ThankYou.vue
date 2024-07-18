@@ -11,17 +11,10 @@
 	</div>
 </template>
 
-
-<script setup lang="ts">
-
-</script>
-
-
 <style scoped>
 .wrapper {
 	margin-top: 2.25rem;
 	display: grid;
-	height: 100%;
 	place-items: center;
 	text-align: center;
 	align-content: center;
@@ -40,6 +33,7 @@ h1 {
 p {
 	color: var(--clr-cool-gray);
 	line-height: 1.5;
+	margin-bottom: 2rem;
 }
 
 @media (min-width: 50rem) {
@@ -50,6 +44,7 @@ p {
 	.wrapper {
 		gap: 1.5rem;
 		margin-top: 0;
+		height: 100%;
 	}
 
 	h1 {
@@ -63,6 +58,7 @@ p {
 
 	p {
 		margin-top: -1rem;
+		margin-bottom: 0;
 	}
 }
 </style>
