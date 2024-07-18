@@ -9,7 +9,7 @@
 				<component :is="resolveComponent(`Icon${plan.name}`)" />
 				<div class="plan-card-text">
 					<h2>{{ plan.name }}</h2>
-					<p>{{ isYearly ? `$${plan.price.yearly}/yr` : `$${plan.price.monthly}/mo` }}</p>
+					<p>{{ dataStore.formatPrice(plan.price) }}</p>
 					<p v-show="isYearly">2 months free</p>
 				</div>
 			</div>
